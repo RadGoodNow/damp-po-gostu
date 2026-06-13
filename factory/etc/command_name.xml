@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<command_name>
+	<!-- 匹配AT指令[command]对应的校准项名称[name]，再根据名称[name]到模块文件中匹配校准信息 -->
+	<item command = "AT+BK_SNS_LASER=4" name = "TMF8801_crosstalk_cali" name_CN = "TMF8801 offset 校准" />
+	<item command = "AT+BK_SNS_LASER=7" name = "TMF8801_clock_cali" name_CN = "TMF8801 crosstalk 校准" />
+	<item command = "AT+BKHWKJ=1" name = "f_ps_high_cali" name_CN = "前置红外高功率校准" />
+	<item command = "AT+BKHWKJ=5,1" name = "f_ps_low_cali" name_CN = "前置红外低功率校准" />
+	<item command = "AT+BKHWKJ=10" name = "f_ps_high_and_low_cali" name_CN = "前置红外高低功率校准" />
+	<item command = "AT+BKHWKJ=6,0" name = "cct_cali" name_CN = "cct校准标志" />
+	<item command = "AT+BKHWKJ=6,1" name = "cct_cali" name_CN = "cct校准标志" />
+	<item command = "AT+BK_AUD_CTE=1" name = "ultra_far" name_CN = "超声远离" />
+	<item command = "AT+BKGM=1" name = "light_sensor_cali" name_CN = "光敏校准" />
+	<item command = "AT+BKGM_CCT=1" name = "cct_lux1_cali" name_CN = "光敏色温校准1" />
+	<item command = "AT+BKGM_CCT=3" name = "cct_lux2_cali" name_CN = "光敏色温校准2" />
+	<item command = "AT+BK_SNS_LGT_UD=0,0" name = "light_sensor_dark_screen_cali" name_CN = "亮箱暗屏光敏校准" />
+	<item command = "AT+BK_SNS_LGT_UD=0,1" name = "light_sensor_bright_screen_cali" name_CN = "暗箱亮屏光敏校准" />
+	<item command = "AT+BK_SNS_LGT_UD=6,0" name = "light_sensor_leak_cali" name_CN = "光敏漏光校准" />
+	<item command = "AT+BK_SNS_LGT_UD=6,2" name = "light_sensor_leak_cali" name_CN = "清除光敏漏光校准参数" />
+	<item command = "AT+BK_SNS_LGT_UD=10,0" name = "light_sensor_dark_screen_main_left_cali" name_CN = "亮箱暗屏光敏校准(三光敏主屏左下)" />
+	<item command = "AT+BK_SNS_LGT_UD=10,1" name = "light_sensor_bright_screen_main_left_cali" name_CN = "暗箱亮屏光敏校准(三光敏主屏左下)" />
+	<item command = "AT+BK_SNS_LGT_UD=12,0" name = "light_sensor_leak_main_left_cali" name_CN = "光敏漏光校准(三光敏主屏左下)" />
+	<item command = "AT+BKTLY=0" name = "gyroscope_cali" name_CN = "陀螺仪校准" />
+	<item command = "AT+BKHWKJ_BACK=1" name = "back_ps_cali" name_CN = "副屏普通红外校准" />
+	<item command = "AT+BKHWKJ_BACK=6,0" name = "back_cct_cali_flag" name_CN = "副屏cct校准标志" />
+	<item command = "AT+BKHWKJ_BACK=6,1" name = "back_cct_cali_flag" name_CN = "副屏cct校准标志" />
+	<item command = "AT+BKGM_BACK=1" name = "back_light_sensor_cali" name_CN = "副屏光敏校准" />
+	<item command = "AT+BKGM_CCT_BACK=1" name = "back_cct_lux1_cali" name_CN = "副屏光敏色温校准1" />
+	<item command = "AT+BKGM_CCT_BACK=3" name = "back_cct_lux2_cali" name_CN = "副屏光敏色温校准2" />
+	<item command = "AT+BK_SNS_LGT_UD_BACK=0,0" name = "back_dark_screen_cali" name_CN = "副屏亮箱暗屏光敏校准" />
+	<item command = "AT+BK_SNS_LGT_UD_BACK=0,1" name = "back_bright_screen_cali" name_CN = "副屏暗箱亮屏光敏校准" />
+	<item command = "AT+BK_SNS_LGT_UD_BACK=6,0" name = "back_light_sensor_leak_cali" name_CN = "副屏暗箱亮屏光敏校准" />
+	<item command = "AT+BKZLJC=0,5" name = "gyrosensor_cali" name_CN = "gyrosensor 校准" />
+
+	<!-- AT+BK_SNS_GRA=0,0开启重力校准线程，AT+BK_SNS_GRA=0,1读取校准结果，当校准结果[persist.sys.gs_cal_flag]为[1]时记录校准值 -->
+	<item command = "AT+BK_SNS_GRA=0,1" name = "gyrosensor_cali_bkgd" cond = "persist.sys.gs_cal_flag" value = "1" name_CN = "重力校准" />
+	<item command = "AT+BK_SNS_GYR=0,3" name = "gyrosensor_ois_cali" cond = "persist.sys.gyroscope_ois_cal_flag" value = "1" name_CN = "gyrosensor OIS 校准" />
+	<item command = "AT+BK_SNS_GYR=0,5" name = "gyrosensor_all_cali" cond = "persist.sys.gyroscope_ois_cal_flag#persist.sys.gyroscope_cal_flag" value = "1#1" name_CN = "gyrosensor 校准"/>
+	<item command = "AT+BK_SNS_CCT=1" name = "back_cct_cali" name_CN = "后置cct校准" />
+	<item command = "AT+BK_SNS_CCT=1,1" name = "front_cct_cali" name_CN = "前置cct校准" />
+	<item command = "AT+BK_SNS_CCT=18,1" name = "cct_cali_TSL2522" name_CN = "TSL2522 cct校准" />
+	<item command = "AT+BK_SNS_CCT=3" name = "back_cct_golden_cali" name_CN = "金机后置cct校准" />
+	<item command = "AT+BK_SNS_CCT=3,1" name = "front_cct_golden_cali" name_CN = "金机前置cct校准" />
+	<item command = "AT+BK_HALL_IC=8,1,0" name = "up_hall_ic_zero" name_CN = "静音霍尔上拨0度" />
+	<item command = "AT+BK_HALL_IC=8,1,180" name = "up_hall_ic_flat" name_CN = "静音霍尔上拨180度" />
+	<item command = "AT+BK_HALL_IC=8,2,0" name = "low_hall_ic_zero" name_CN = "静音霍尔下拨0度" />
+	<item command = "AT+BK_HALL_IC=8,2,180" name = "low_hall_ic_flat" name_CN = "静音霍尔下拨180度" />
+
+	<item command = "AT+BK_LCM_CALI=1,1" name = "lcm_cali_main" name_CN = "LCM主屏校准" />
+	<item command = "AT+BK_LCM_CALI_BACK=1,1" name = "lcm_cali_sub" name_CN = "LCM副屏校准" />
+	<item command = "AT+BK_LCMT_UPLOAD=1" name = "lcm_cali_file" is_substr = "1" cond = "is_back" value = "0" name_CN = "LCM主屏校准文件" />
+	<item command = "AT+BK_LCMT_UPLOAD=1" name = "lcm_cali_file_back" is_substr = "1" cond = "is_back" value = "1" name_CN = "LCM副屏校准文件" />
+
+	<!-- WLAN -->
+	<item command = "AT+BKWMAC=1" name = "wifi_mac" is_substr = "1" name_CN = "WIFI mac地址" />
+
+	<item command = "AT+EMBT=0,BT" name = "bt_mac" is_substr = "1" name_CN = "BT mac地址" />
+
+	<item command = "AT+SGDJZ=2,F" name = "f_flash_cali" name_CN = "前置闪光灯校准" />
+	<item command = "AT+SGDJZ=2,B" name = "b_flash_cali" name_CN = "后置闪光灯校准" />
+
+	<item command = "AT+BK_CCM_HIDE=1,1" name = "camera_hall_cali_push_rotate" cond = "is_rotate_camera" value = "1" name_CN = "旋转摄像头霍尔缩进" />
+	<item command = "AT+BK_CCM_HIDE=1,1" name = "camera_hall_cali_push" name_CN = "摄像头霍尔缩进" />
+	<item command = "AT+BK_CCM_HIDE=5,3" name = "half_retract_fluency" name_CN = "弹出到半缩进" />
+	<item command = "AT+BK_CCM_HIDE=1,2" name = "camera_hall_cali_pop_rotate" cond = "is_rotate_camera" value = "1" name_CN = "旋转摄像头霍尔弹出" />
+	<item command = "AT+BK_CCM_HIDE=1,2" name = "camera_hall_cali_pop" name_CN = "摄像头霍尔弹出" />
+	<item command = "AT+BK_CCM_HIDE=5,1" name = "half_pop_fluency" name_CN = "缩进到半弹出" />
+	<item command = "AT+BK_CCM_CAL=1,F" name = "f_double_cam_cali" name_CN = "前置双摄校准" />
+	<item command = "AT+BK_CCM_CAL=3,F" name = "f_double_cam_cali" name_CN = "前置双摄校准" />
+	<item command = "AT+BK_CCM_CAL=1,B" name = "b_double_cam_focus_cali" name_CN = "后置双摄对焦校准" />
+	<item command = "AT+BK_CCM_CAL=3,B" name = "b_double_cam_focus_cali" name_CN = "后置双摄对焦校准" />
+	<item command = "AT+BK_CCM_ROT=1,1" name = "rotate_max_angle_fluency" name_CN = "旋转摄像头最大角度标定流畅度" />
+	<item command = "AT+BK_CCM_ROT=1,3" name = "rotate_front_cam_angle_cali" name_CN = "旋转摄像头最大角度前拍" />
+	<item command = "AT+BK_CCM_ROT=1,5" name = "rotate_back_cam_angle_cali" name_CN = "旋转摄像头最大角度后拍" />
+	<item command = "AT+BK_CCM_VIRT=1,F,MAIN,WIDE" name = "f_main_wide_virt_cali" name_CN = "前置主摄&amp;广角虚化校准" />
+	<item command = "AT+BK_CCM_VIRT=4,F,MAIN,WIDE" name = "f_main_wide_virt_cali" name_CN = "前置主摄&amp;广角虚化校准带结果" />
+	<item command = "AT+BK_CCM_VIRT=1,F,MAIN,RTB" name = "f_main_rtb_virt_cali" name_CN = "前置主摄&amp;虚化虚化校准" />
+	<item command = "AT+BK_CCM_VIRT=4,F,MAIN,RTB" name = "f_main_rtb_virt_cali" name_CN = "前置主摄&amp;虚化虚化校准带结果" />
+	<item command = "AT+BK_CCM_VIRT=1,R,MAIN,TELE" name = "r_main_tele_virt_cali" name_CN = "后置主摄&amp;望远虚化校准" />
+	<item command = "AT+BK_CCM_VIRT=4,R,MAIN,TELE" name = "r_main_tele_virt_cali" name_CN = "后置主摄&amp;望远虚化校准" />
+	<item command = "AT+BK_CCM_VIRT=1,R,MAIN,WIDE" name = "r_main_wide_virt_cali" name_CN = "后置主摄&amp;广角虚化校准 " />
+	<item command = "AT+BK_CCM_VIRT=4,R,MAIN,WIDE" name = "r_main_wide_virt_cali" name_CN = "后置主摄&amp;广角虚化校准 " />
+	<item command = "AT+BK_CCM_VIRT=1,R,MAIN,RTB" name = "r_main_rtb_virt_cali" name_CN = "后置主摄&amp;虚化虚化校准" />
+	<item command = "AT+BK_CCM_VIRT=4,R,MAIN,RTB" name = "r_main_rtb_virt_cali" name_CN = "后置主摄&amp;虚化虚化校准" />
+	<item command = "AT+BK_CCM_VIRT=1,R,WIDE,TELE" name = "r_wide_rtb_virt_cali" name_CN = "后置广角&amp;望远虚化校准" />
+	<item command = "AT+BK_CCM_VIRT=4,R,WIDE,TELE" name = "r_wide_rtb_virt_cali" name_CN = "后置广角&amp;望远虚化校准" />
+	<item command = "AT+BK_CCM_VIRT=1,R,TELE,PERI" name = "r_tele_peri_virt_cali" name_CN = "后置望远&amp;潜望虚化校准" />
+	<item command = "AT+BK_CCM_VIRT=4,R,TELE,PERI" name = "r_tele_peri_virt_cali" name_CN = "后置望远&amp;潜望虚化校准" />
+	<item command = "AT+BK_CCM_VIRT=1,R,MAIN,PERI" name = "r_main_peri_virt_cali" name_CN = "后置主摄&amp;潜望虚化校准" />
+	<item command = "AT+BK_CCM_VIRT=4,R,MAIN,PERI" name = "r_main_peri_virt_cali" name_CN = "后置主摄&amp;潜望虚化校准" />
+	<item command = "AT+BK_CCM_AE=4,R,MAIN,WIDE" name = "r_main_wide_ae" name_CN = "后置主摄&amp;广角AE标定 " />
+	<item command = "AT+BK_CCM_FUSE=1,R,TELE,PERI" name = "r_tele_peri_fuse_cali" name_CN = "后置望远&amp;潜望融合校准" />
+	<item command = "AT+BK_CCM_FUSE=4,R,TELE,PERI" name = "r_tele_peri_fuse_cali" name_CN = "后置望远&amp;潜望融合校准" />
+	<item command = "AT+BK_CCM_FUSE=1,R,MAIN,WIDE" name = "r_main_wide_fuse_cali" name_CN = "后置主摄&amp;广角融合校准" />
+	<item command = "AT+BK_CCM_FUSE=4,R,MAIN,WIDE" name = "r_main_wide_fuse_cali" name_CN = "后置主摄&amp;广角融合校准" />
+
+	<item command = "AT+BK_VBR_CAL=1" name = "linear_motor_cali" name_CN = "线性马达校准" />
+
+	<item command = "AT+BK_SYS_COL=1" name = "sys_theme_color" is_substr = "1" name_CN = "主题颜色" />
+	<item command = "AT+BKZSJ=1" name = "show_device" name_CN = "设置展示机标志" />
+	<item command = "AT+BKZSJ=0" name = "show_device" name_CN = "清除展示机标志" />
+	<item command = "AT+BKEGMCDK=1,all" name = "clean_backup_cali_data" name_CN = "清除backup校准参数" />
+</command_name>

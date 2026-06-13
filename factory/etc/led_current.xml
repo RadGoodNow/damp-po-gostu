@@ -1,0 +1,5 @@
+<led_current>
+	<REAR_LED1 value="105"/>
+	<REAR_LED2 value="105"/>
+	<FRONT_LED1 value="105"/>
+</led_current>

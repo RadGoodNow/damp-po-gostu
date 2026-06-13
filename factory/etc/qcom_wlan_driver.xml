@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<platform>
+    <wlan_driver platform="SDM670" module_name="wlan" insmod_path="/vendor/lib/modules/qca_cld3_wlan.ko"/>
+    <wlan_driver platform="SDM710" module_name="wlan" insmod_path="/vendor/lib/modules/qca_cld3_wlan.ko"/>
+    <wlan_driver platform="SDM845" module_name="wlan" insmod_path="/vendor/lib/modules/qca_cld3_wlan.ko"/>
+    <wlan_driver platform="SM8150" module_name="wlan" insmod_path="/vendor/lib/modules/qca_cld3_wlan.ko"/>
+    <wlan_driver platform="SM6150" module_name="wlan" insmod_path="/vendor/lib/modules/qca_cld3_wlan.ko"/>
+    <wlan_driver platform="SM7250" module_name="wlan" insmod_path="/vendor/lib/modules/qca_cld3_wlan.ko"/>
+    <wlan_driver platform="SM6125" module_name="wlan" insmod_path="/vendor/lib/modules/qca_cld3_wlan.ko"/>
+    <wlan_driver platform="SM7150" module_name="wlan" insmod_path="/vendor/lib/modules/qca_cld3_wlan.ko"/>
+    <wlan_driver platform="SM7125" module_name="wlan" insmod_path="/vendor/lib/modules/qca_cld3_wlan.ko"/>
+    <wlan_driver platform="SM4350" module_name="wlan" insmod_path="/vendor/lib/modules/qca_cld3_wlan.ko"/>
+    <wlan_driver platform="SM7125" module_name="wlan" insmod_path="/vendor/lib/modules/qca_cld3_wlan.ko"/>
+    <wlan_driver platform="SM6375" module_name="wlan" insmod_path="/vendor/lib/modules/qca_cld3_wlan.ko"/>
+    <wlan_driver platform="SM8350" module_name="wlan" insmod_path="/vendor/lib/modules/qca_cld3_wlan.ko"/>
+    <wlan_driver platform="SM4250" module_name="wlan" insmod_path="/vendor/lib/modules/qca_cld3_wlan.ko"/>
+    <wlan_driver platform="SM6225" module_name="wlan" insmod_path="/vendor/lib/modules/qca_cld3_wlan.ko"/>
+	<wlan_driver platform="SM8250" module_name="wlan" insmod_path="/vendor/lib/modules/qca_cld3_wlan.ko"/>
+    <wlan_driver platform="SM4450" module_name="adrastea" insmod_path="/vendor/lib/modules/qca_cld3_adrastea.ko"/>
+    <wlan_driver platform="SM6450" module_name="adrastea" insmod_path="/vendor/lib/modules/qca_cld3_adrastea.ko"/>
+    <wlan_driver platform="SM8450" module_name="qca6490" insmod_path="/vendor/lib/modules/qca_cld3_qca6490.ko"/>
+	<wlan_driver platform="SM8475" module_name="qca6490" insmod_path="/vendor/lib/modules/qca_cld3_qca6490.ko"/>
+    <wlan_driver platform="SM8550" module_name="kiwi_v2" insmod_path="/vendor/lib/modules/qca_cld3_kiwi_v2.ko"/>
+    <wlan_driver platform="SM8650" module_name="qca_cld3_kiwi_v2" insmod_path="/vendor/lib/modules/qca_cld3_kiwi_v2.ko"/>
+    <wlan_driver platform="SM7325" module_name="wlan" insmod_path="/vendor/lib/modules/qca_cld3_qca6750.ko"/>
+    <wlan_driver platform="SM7550" module_name="qca6750" insmod_path="/vendor/lib/modules/qca_cld3_qca6750.ko"/>
+    <wlan_driver platform="SM8635" module_name="qca_cld3_qca6750" insmod_path="/vendor/lib/modules/qca_cld3_qca6750.ko"/>
+    <wlan_driver platform="SM7675" module_name="qca_cld3_qca6750" insmod_path="/vendor/lib/modules/qca_cld3_qca6750.ko"/>
+</platform>

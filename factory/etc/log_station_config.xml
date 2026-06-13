@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<!--
+/*
+ * Copyright (C) 2024 vivo
+ *
+ * The file is used to config that which stations belong to camera station.
+ * For these stations, we will export phone's resources into log which is configured in "log_res_export_config.xml".
+ * <Tips>: This operation will increase the size of each log for these stations, So config it if necessary.
+ *
+ *
+ * Elements notes:
+ * "station_id" : The simplified English name
+ * "station_cn_zh": The chinese name
+ */
+-->
+
+<log_station_config>
+    <fingerprint_station>
+        <Item station_id="CN" station_cn_zh="自动拍照四测试位"/>
+        <Item station_id="6V" station_cn_zh="MMI辅助测试位"/>
+        <Item station_id="7X" station_cn_zh="功能测试位2"/>
+        <Item station_id="7U" station_cn_zh="功能测试位1"/>
+    </fingerprint_station>
+
+</log_station_config>

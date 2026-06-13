@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--data/vgc最大理论容量配置
+    project: 项目名 ro.vivo.product.model
+    vgc_type: 对应vgc制式 ro.vgc.cust.name
+    value: data/vgc最大理论容量，正整数配置，单位GB
+
+    解析规则：
+    1.匹配project
+      1.1 匹配project成功，匹配vgc_type
+        1.1.1 匹配vgc_type成功，取value值作为最大容量
+        1.1.2 匹配vgc_type失败, 则使用project为default的value配置值做为最大容量，若default配置不存在则报错
+      1.2 匹配project失败，匹配vgc_type
+        1.2.1 匹配vgc_type成功，取value值作为最大容量
+        1.2.2 匹配vgc_type失败，则使用project为default的value配置值做为最大容量，若default配置不存在则报错
+
+    example:
+    <data_vgc_size project="" vgc_type="V3331"  value="3"/>       //有效配置：所有项目V3331制式最大3GB
+    <data_vgc_size project="PD2309" vgc_type="V3331"  value="3"/> //有效配置：PD2309项目V3331制式最大3GB
+    <data_vgc_size project="PD2309" vgc_type=""  value="3"/>      //无效配置：项目名存在时，vgc_type不能为空，若为空则配置无效，使用default配置
+
+    注：
+    1. 此配置只针对政企项目生效
+    2. 编译到手机中的路径：factory/etc/data_vgc_configs.xml
+-->
+
+<data_vgc_config>
+    <data_vgc_size project="default" vgc_type=""  value="3"/>  <!-- default配置，必须且唯一，切勿删除 -->
+
+</data_vgc_config>

@@ -1,0 +1,22 @@
+<LCM_CHOOSE_CONFIG>
+<!--SCREEN 可以配置属性name和is_main。name指明该screen对应的类实现。系统启动后根据name去实例化。 is_main指明是否为入口-->
+<SCREEN name="main_screen" is_main="true">
+	<!--SCREEN中目前支持button配置。启动name唯一标志一个button。 src：button未选中时的图片，select_src：button选中时的图片, sx,sy分别为
+	起始坐标x,y。使用百分比进行配置。百分比为屏幕的大小. is_select:初始化时选中的button.
+	所有的图片都会去/factory/etc/目录加载。-->
+	<BUTTON name="high_white" src="high_white" select_src="high_white_select" sx="20%" sy="10%" is_select="true"/>
+	<BUTTON name="three_base_color" upper_button="high_white" upper_distance="40" src="three_base_color" select_src="three_base_color_select"/>
+	<BUTTON name="self_check" upper_button="three_base_color" upper_distance="40" src="self_test" select_src="self_test_select"/>
+	<BUTTON name="brightness_set" upper_button="self_check" upper_distance="40" src="brightness_set" select_src="brightness_set_select"/>
+	<BUTTON name="low_brightness_test" upper_button="brightness_set" upper_distance="40" src="2nit_32gray_test" select_src="2nit_32gray_test_select"/>
+	<BUTTON name="low_brightness_white_test" upper_button="low_brightness_test" upper_distance="40" src="low_brightness_white" select_src="low_brightness_white_select"/>
+	<BUTTON name="power_off" upper_button="low_brightness_white_test" upper_distance="40" src="power_off" select_src="power_off_select"/>
+</SCREEN>
+<SCREEN name="brightness_set_screen" is_main="false">
+	<BUTTON name="100" src="100_brightness" select_src="100_brightness_select" sx="35%" sy="30%" is_select="true"/>
+	<BUTTON name="75" src="75_brightness" select_src="75_brightness_select" sx="35%" sy="40%"/>
+	<BUTTON name="50" src="50_brightness" select_src="50_brightness_select" sx="35%" sy="50%"/>
+	<BUTTON name="25" src="25_brightness" select_src="25_brightness_select" sx="35%" sy="60%"/>
+	<BUTTON name="ok" src="ok" select_src="ok_select" sx="25%" sy="75%"/>
+</SCREEN>
+</LCM_CHOOSE_CONFIG>

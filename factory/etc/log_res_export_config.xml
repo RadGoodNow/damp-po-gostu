@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<!--
+/*
+ * Copyright (C) 2024 vivo
+ *
+ * The file is used to config for log auto test function in produce line
+ *
+ *
+ * Elements notes:
+ * "log_res_zip_name" : The exported resoures's path name in log 
+ * "phone_res_path": The resources file or dir path in phones
+ * <Tips>: You should config readable permission for phone_res_path to avoid exporting failed.
+ *
+ *
+ * Example:
+ * <Item log_res_path="camera" phone_res_path="/data/vendor/camera"/>
+ * This will export '/data/vendor/camera' into camera dir.
+ * So you can find it in log path: '<log>/camera/data/vendor/camera'
+ *
+ */
+-->
+
+<log_res_export_config>
+    <camera>
+        <Item log_res_path="pictures" phone_res_path="/data/vendor/camera"/>
+        <Item log_res_path="pictures" phone_res_path="/sdcard/engineermode/camera"/>
+        <Item log_res_path="pictures" phone_res_path="/data/vendor/camera_dump"/>
+        <Item log_res_path="pictures" phone_res_path="/sdcard/DCIM/camera"/>
+        <Item log_res_path="pictures" phone_res_path="/vendor/etc/sensors/config"/>
+        <Item log_res_path="pictures" phone_res_path="/mnt/vendor/persist/sensors/registry/registry"/>
+        <Item log_res_path="pictures" phone_res_path="/mnt/vendor/nvcfg/sensor"/>
+    </camera>
+
+    <fingerprint>
+        <Item log_res_path="fingerprint_data" phone_res_path="/sdcard/Android/fpimg"/>
+        <Item log_res_path="fingerprint_data" phone_res_path="/data/vendor/fingerprint"/>
+    </fingerprint>
+	<common>
+		<Item log_res_path="imuMotorTest" phone_res_path="/sdcard/imu_motor_test"/>
+	</common>
+</log_res_export_config>

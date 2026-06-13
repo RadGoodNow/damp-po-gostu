@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<common_items>
+	<iteminfo name="pre_cmd"  save_result="false" command="mount -t debugfs none /d" delay_ms="200" />
+	<iteminfo name="CMD_CPU0" src_file="/d/energy_model/cpu0/*/power" save_result="true"  command="cat /d/energy_model/cpu0/*/power"/>
+	<iteminfo name="CMD_CPU2" src_file="/d/energy_model/cpu2/*/power" save_result="true"  command="cat /d/energy_model/cpu2/*/power"/>
+	<iteminfo name="CMD_CPU5" src_file="/d/energy_model/cpu5/*/power" save_result="true"  command="cat /d/energy_model/cpu5/*/power"/>
+	<iteminfo name="CMD_CPU7" src_file="/d/energy_model/cpu7/*/power" save_result="true"  command="cat /d/energy_model/cpu7/*/power"/>
+</common_items>

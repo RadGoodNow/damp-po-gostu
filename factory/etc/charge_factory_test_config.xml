@@ -1,0 +1,18 @@
+<charge_test_config>
+	<!--所有项目通用，配置为单个节点-->
+	<node name="cycle" path="/sys/class/fuelsummary/cycle"/>
+	<node name="FCC" path="/sys/class/power_supply/battery/charge_full"/>
+	<!--
+	不同项目可能节点不同，在node下配置多个path节点。每个path可以配置platform和project。
+	工模从上往下顺序遍历，找到第一个符合条件的路径。不配置platform和project的话，判断节点是否存在。
+	找到第一个存在节点进行读值。
+	<node name="xxx">
+		<path="" platform="" project=""/>
+	</node>
+	-->
+	<node name="SOH">
+		<path name="/sys/class/fuelsummary/soh_from_ic"/>
+		<path name="/sys/class/fuelsummary/soh"/>
+	</node>
+	
+</charge_test_config>
