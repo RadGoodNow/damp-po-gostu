@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<language>
+	<display>English</display>
+
+	<resources>
+		<!-- Font overrides - only change these if your language requires special characters -->
+		<resource name="font_l" type="fontoverride" filename="HYQiHei-EZS.ttf" size="51" />
+		<resource name="font_m" type="fontoverride" filename="HYQiHei-EZS.ttf" size="42" />
+		<resource name="font_s" type="fontoverride" filename="HYQiHei-EZS.ttf" size="36" />
+		<resource name="fixed"  type="fontoverride" filename="HYQiHei-EZS.ttf" size="30" />
+	</resources>
+
+	<include>
+		<xmlfile name="PAD-en-US-res.xml"/>
+	</include>
+</language>

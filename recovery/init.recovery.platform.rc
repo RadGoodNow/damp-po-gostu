@@ -1,0 +1,148 @@
+on early-init
+    write /proc/sys/kernel/firmware_config/force_sysfs_fallback 1
+    # add in /vendor/qcom/opensource/securemsm-kernel/securemsm_kernel_vendor_board.mk
+    #insmod /vendor/lib/modules/smcinvoke_dlkm.ko
+    # add for proc/tzdbg log
+    insmod /vendor/lib/modules/tz_log_dlkm.ko
+    # add for wlan ko, and must wait cnss2 load done
+    insmod /vendor/lib/modules/cnss_prealloc.ko
+    insmod /vendor/lib/modules/cnss_nl.ko
+    insmod /vendor/lib/modules/wlan_firmware_service.ko
+    insmod /vendor/lib/modules/cnss_plat_ipc_qmi_svc.ko
+    insmod /vendor/lib/modules/smem-mailbox.ko
+    insmod /vendor/lib/modules/cnss_utils.ko
+    insmod /vendor/lib/modules/icnss2.ko
+    insmod /vendor/lib/modules/gsim.ko
+    insmod /vendor/lib/modules/rmnet_mem.ko
+    insmod /vendor/lib/modules/ipam.ko
+    insmod /vendor/lib/modules/rfkill.ko
+    insmod /vendor/lib/modules/cfg80211.ko
+
+    copy /system/etc/vintf/manifest/android.hardware.health-service.qti.xml /vendor/etc/vintf/manifest/android.hardware.health-service.qti.xml
+    chmod 0644 /vendor/etc/vintf/manifest/android.hardware.health-service.qti.xml
+    rm /system/etc/vintf/manifest/android.hardware.health-service.qti.xml
+
+    copy /system/etc/vintf/manifest/boot-service.qti.xml /vendor/etc/vintf/manifest/boot-service.qti.xml
+    chmod 0644 /vendor/etc/vintf/manifest/boot-service.qti.xml
+    rm /system/etc/vintf/manifest/boot-service.qti.xml
+
+    copy /system/etc/vintf/manifest/android.hardware.fastboot-service.example.xml /vendor/etc/vintf/manifest/android.hardware.fastboot-service.example.xml
+    chmod 0644 /vendor/etc/vintf/manifest/android.hardware.fastboot-service.example.xml
+    rm /system/etc/vintf/manifest/android.hardware.fastboot-service.example.xml
+
+on init
+    chmod 0777 /dev/smcinvoke
+    chmod 0777 /dev/dma_heap/qcom,qseecom
+
+on fs
+    #create mountpoint for /mnt/vendor/persist partition
+    mkdir /mnt/vendor/persist 0777 system system
+    mount ext4 /dev/block/by-name/persist /mnt/vendor/persist
+    chown root system /mnt/vendor/persist
+    chmod 0777 /mnt/vendor/persist
+    restorecon_recursive /mnt/vendor/persist
+    mkdir /mnt/vendor/persist/secnvm 0777 system system
+    mkdir /mnt/vendor/persist/data 0777 system system
+
+on early-boot
+    start qseecomd
+    start cryptfshw-1-0
+ 
+    setprop recovery.charger_battery 1
+
+    exec -- /system/bin/modprobe -a -d /lib/modules vivo_mb sensors_class vivo_ts vivo-fuel_summary
+
+#todo , fastbootd load battery crash dump
+on property:recovery.charger_battery=1 && property:recovery.fastboot_mode=0
+    # mount modem here.
+    mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /vendor/firmware_mnt ro barrier=1 discard
+    # kernel-5.4 charger need start ADSP and then read the SOC
+    exec -- /system/bin/modprobe -a -d /lib/modules pmic_glink pdr_interface qmi_helpers rproc_qcom_common qcom_smd qcom_glink_smem qcom_glink
+
+    insmod /vendor/lib/modules/q6_pdr_dlkm.ko
+    insmod /vendor/lib/modules/q6_notifier_dlkm.ko
+    insmod /vendor/lib/modules/snd_event_dlkm.ko
+    insmod /vendor/lib/modules/gpr_dlkm.ko
+    insmod /vendor/lib/modules/spf_core_dlkm.ko
+    insmod /vendor/lib/modules/adsp_loader_dlkm.ko
+
+    wait /sys/class/remoteproc/remoteproc*
+    exec u:object_r:vendor_qti_init_shell:s0 -- /system/bin/sh /recovery_load_adsp.sh
+
+    write /sys/kernel/boot_adsp/boot 1
+    wait /sys/class/power_supply/battery
+
+on property:recovery.service=1
+    start vendor.boot-qti
+    start vendor.health-recovery
+
+on property:recovery.service=1 && property:recovery.fastboot_mode=0
+    start keystore2
+    start keymint-qti
+    start vold
+    setprop recovery.state.services.ready 1
+
+
+on property:vts_app_recovery.status=run
+    start vts_app_recovery
+    setprop vts_app_recovery.status running
+
+service vndservicemanager /vendor/bin/vndservicemanager /dev/vndbinder
+    user root
+    writepid /dev/cpuset/system-background/tasks
+    seclabel u:r:recovery:s0
+
+
+service qseecomd /vendor/bin/qseecomd
+    disabled
+    user root
+    group root
+    seclabel u:r:recovery:s0
+
+service keymint-qti /vendor/bin/android.hardware.security.keymint-service-qti
+    disabled
+    user root
+    group root drmrpc
+    seclabel u:r:recovery:s0
+
+service cryptfshw-1-0 /vendor/bin/vendor.qti.hardware.cryptfshw@1.0-service-qti
+    disabled
+    user root
+    group root
+    seclabel u:r:recovery:s0
+
+service keystore2 /system/bin/keystore2 /data/misc/keystore
+    disabled
+    user keystore
+    group keystore drmrpc readproc log
+    writepid /dev/cpuset/foreground/tasks
+    seclabel u:r:recovery:s0
+
+service vendor.boot-qti /system/bin/hw/android.hardware.boot-service.qti.recovery
+    disabled
+    user root
+    group root
+    seclabel u:r:recovery:s0
+
+
+service vendor.health-recovery /system/bin/hw/android.hardware.health-service.qti_recovery
+    disabled
+    user root
+    group root
+    seclabel u:r:recovery:s0
+
+
+service vts_app_recovery /system/bin/vts_app_recovery  --update
+  user system
+  disabled
+  seclabel u:r:vts_app:s0
+  oneshot
+
+service vold /system/bin/vold \
+        --blkid_context=u:r:blkid:s0 --blkid_untrusted_context=u:r:blkid_untrusted:s0 \
+        --fsck_context=u:r:fsck:s0 --fsck_untrusted_context=u:r:fsck_untrusted:s0
+    disabled
+    user root
+    group root
+    seclabel u:r:recovery:s0
+

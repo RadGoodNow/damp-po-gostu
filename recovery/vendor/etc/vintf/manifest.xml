@@ -1,0 +1,53 @@
+<!--
+    Input:
+        manifest_kalama.xml
+-->
+<manifest version="5.0" type="device" target-level="6">
+    <hal format="aidl">
+        <name>android.hardware.security.keymint</name>
+        <fqname>IKeyMintDevice/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.security.keymint</name>
+        <fqname>IRemotelyProvisionedComponent/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.gatekeeper</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IGatekeeper</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IGatekeeper/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.qseecom</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IQSEECom</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IQSEECom/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.qteeconnector</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IAppConnector</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IGPAppConnector</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IAppConnector/default</fqname>
+        <fqname>@1.0::IGPAppConnector/default</fqname>
+    </hal>
+    <sepolicy>
+        <version>10000.0</version>
+    </sepolicy>
+    <kernel target-level="7"/>
+</manifest>
